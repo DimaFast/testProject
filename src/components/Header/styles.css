@@ -1,0 +1,14 @@
+.header{
+    background-color: cadetblue;
+}
+
+.headerInner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 300px;
+    margin: 0 auto;
+    line-height: 80px;
+    position: sticky;
+    top: 0;
+}

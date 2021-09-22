@@ -9,6 +9,8 @@ import Profile from './pages/profile'
 import List from './pages/list'
 import ChangeList from './pages/changeList'
 
+import Test from './pages/test'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Router = () => {
@@ -29,7 +31,7 @@ const Router = () => {
     {
       path: routes.signIn,
       name: 'signIn',
-      Component: () => <SignIn setUser={setUser} />,
+      Component: () => <SignIn setUserPro={setUser} />,
       exact: true,
     },
     {
@@ -47,6 +49,12 @@ const Router = () => {
       path: routes.changeList,
       name: 'changeList',
       Component: ChangeList,
+      exact: true,
+    },
+    {
+      path: routes.test,
+      name: 'test',
+      Component: Test,
       exact: true,
     },
   ]
