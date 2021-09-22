@@ -1,0 +1,42 @@
+.filmItem{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.filmImg{
+    max-width: 500px;
+    width: 100%;
+}
+
+.filmWrapper{
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+}
+
+.filmName{
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.filmRating{
+    font-size: 24px;
+}
+
+.changeFilm{
+    padding: 20px 40px;
+    color: red;
+    background-color: transparent;
+    border: 1px solid red;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.changeFilm:hover{
+    color: #ffffff;
+    background-color: red;
+    border: 1px solid #FFFFFF;
+}
