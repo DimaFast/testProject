@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { Modal } from 'react-bootstrap'
 
 import { getFilmsId } from '../../api/films'
+import routes from '../../routes'
 
 import './styles.css'
 
@@ -19,7 +20,7 @@ const ChangeList = ({ open, setOpen, changeFilm }) => {
 
   const onSubmit = (data) => {
     changeFilm(id, data)
-    history.push('/list')
+    history.push(routes.list)
   }
 
   return (
@@ -27,7 +28,7 @@ const ChangeList = ({ open, setOpen, changeFilm }) => {
       <button
         onClick={() => {
           setOpen(false)
-          history.push('/list')
+          history.push(routes.list)
         }}
         className="close"
       >

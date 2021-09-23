@@ -1,35 +1,33 @@
 import { random } from 'lodash'
+import { setItem, getItem, removeItem } from '../localStorage'
 
 export const getFilms = async () => {
-  return JSON.parse(localStorage.getItem('films'))
+  return getItem('films')
 }
 
 export const getFilmsId = async (filmId) => {
-  const value = await JSON.parse(localStorage.getItem('films'))
+  const value = getItem('films')
   return value.find(({ id }) => id === filmId)
 }
 
 export const setFilms = async (films) => {
   films.id = JSON.stringify(random(0, 100))
   console.log(films)
-  localStorage.setItem(
-    'films',
-    JSON.stringify([...JSON.parse(localStorage.getItem('films')), films])
-  )
+  setItem('films', [...getItem('films'), films])
 }
 
 export const deleteFilm = async (filmId) => {
-  const value = await JSON.parse(localStorage.getItem('films'))
+  const value = getItem('films')
   const index = value.filter((value) => value.id !== filmId)
-  localStorage.removeItem('films')
-  localStorage.setItem('films', JSON.stringify(index))
+  removeItem('films')
+  setItem('films', index)
 }
 
 export const changeFilm = async (filmId, newData) => {
   newData.id = random(0, 100)
-  const value = await JSON.parse(localStorage.getItem('films'))
+  const value = getItem('films')
   const index = value.filter((value) => value.id !== filmId)
-  localStorage.removeItem('films')
-  localStorage.setItem('films', JSON.stringify([...index, newData]))
+  removeItem('films')
+  setItem('films', [...index, newData])
   return index
 }

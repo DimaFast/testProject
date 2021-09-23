@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 import routes from '../../routes'
 import Layout from '../../components/Layout'
+import { setItem, getItem } from '../../localStorage'
 
 import './styles.css'
 
@@ -15,10 +16,7 @@ const SignUp = () => {
   } = useForm()
   const history = useHistory()
   const onSubmit = (data) => {
-    localStorage.setItem(
-      'data',
-      JSON.stringify([...JSON.parse(localStorage.getItem('data')), data])
-    )
+    setItem('data', [...getItem('data'), data])
     history.push(routes.signIn)
   }
   return (

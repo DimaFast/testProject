@@ -7,21 +7,22 @@ import { isEmpty } from 'lodash'
 import { setFilms } from '../../api/films'
 import Layout from '../../components/Layout'
 import { deleteUser } from '../../api/user'
+import routes from '../../routes'
 
 import './styles.css'
 
 const Profile = () => {
   const dispatch = useDispatch()
-  const loginUser = useSelector((state) => state.data.payload)
+  const loginUser = useSelector((state) => state.user.data)
   const { register, handleSubmit } = useForm()
   const history = useHistory()
   const onSubmit = (data) => {
-    setFilms(data).then(() => history.push('/list'))
+    setFilms(data).then(() => history.push(routes.list))
   }
   const deleteUserClient = () => {
     deleteUser()
       .then((data) => dispatch({ type: 'DELETE_USER', payload: data }))
-      .then(() => history.push('/'))
+      .then(() => history.push(routes.home))
   }
 
   if (isEmpty(loginUser)) {
