@@ -1,0 +1,5 @@
+export const password = 'password'
+export const email = 'email'
+export const text = 'text'
+export const name = 'name'
+export const img = 'img'

@@ -1,5 +1,5 @@
 const defaultState = {
-  data: null,
+  data: [],
 }
 
 export const filmReducer = (state = defaultState, action) => {
@@ -9,8 +9,8 @@ export const filmReducer = (state = defaultState, action) => {
         ...state,
         data: [...state.data, action.payload],
       }
-    case 'DELETE_FILMS':
-      return { ...state, data: action.payload }
+    case 'GET_FILMS':
+      return { ...state, data: [...action.payload] }
     default:
       return state
   }

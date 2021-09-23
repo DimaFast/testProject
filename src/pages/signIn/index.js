@@ -4,9 +4,10 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { isEmpty, isNil } from 'lodash'
 
-import { inUser } from '../../api/user'
-import Layout from '../../components/Layout'
 import routes from '../../routes'
+import { inUser } from '../../api/user'
+import { email, password } from '../../constans'
+import Layout from '../../components/Layout'
 
 import './styles.css'
 
@@ -48,8 +49,8 @@ const SignIn = () => {
             Input Email
           </label>
           <input
-            {...register('email', { required: 'Please input email', defaultValue: '' })}
-            type="email"
+            {...register(email, { required: 'Please input email', defaultValue: '' })}
+            type={email}
             className="inputSign"
             onFocus={() => setError('')}
           />
@@ -57,8 +58,8 @@ const SignIn = () => {
             {!errors?.password ? 'Input Password' : 'Required Password'}
           </label>
           <input
-            {...register('password', { required: 'Please input password', defaultValue: '' })}
-            type="password"
+            {...register(password, { required: 'Please input password', defaultValue: '' })}
+            type={password}
             className="inputSign"
             onFocus={() => setError('')}
           />

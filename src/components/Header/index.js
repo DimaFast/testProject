@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import routes from '../../routes'
-import { getItem } from '../../localStorage'
 
 import './styles.css'
 
 const Header = () => {
-  const route = getItem('userLogin') ? routes.profile : routes.signUp
+  const user = useSelector((state) => state?.user?.data)
+  const route = user ? routes.profile : routes.signUp
 
   return (
     <section className="header">

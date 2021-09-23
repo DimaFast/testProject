@@ -1,24 +1,28 @@
 import React from 'react'
 import { Redirect, useHistory } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
+import { useForm } from 'react-hook-form'
 import { isEmpty } from 'lodash'
 
-import { setFilms } from '../../api/films'
-import Layout from '../../components/Layout'
-import { deleteUser } from '../../api/user'
 import routes from '../../routes'
+import { setFilms } from '../../api/films'
+import { deleteUser } from '../../api/user'
+import { img, name, text } from '../../constans'
+import Layout from '../../components/Layout'
 
 import './styles.css'
 
 const Profile = () => {
-  const dispatch = useDispatch()
-  const loginUser = useSelector((state) => state.user.data)
+  const loginUser = useSelector((state) => state?.user?.data)
   const { register, handleSubmit } = useForm()
+  const dispatch = useDispatch()
   const history = useHistory()
 
   const onSubmit = (data) => {
-    setFilms(data).then(() => history.push(routes.list))
+    setFilms(data).then(() => {
+      dispatch({ type: 'CREATE_FILMS', payload: data })
+      history.push(routes.list)
+    })
   }
 
   const deleteUserClient = () => {
@@ -51,15 +55,15 @@ const Profile = () => {
         <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)} className="listForm">
           <div>
             <label className="labelList">Name Film</label>
-            <input {...register('name')} type="text" className="inputList" />
+            <input {...register(name)} type="text" className="inputList" />
           </div>
           <div>
             <label className="labelList">Rating Film</label>
-            <input {...register('text')} type="text" className="inputList" />
+            <input {...register(text)} type="text" className="inputList" />
           </div>
           <div>
             <label className="labelList">Film Image</label>
-            <input {...register('img')} type="file" className="inputList" />
+            <input {...register(img)} type="file" className="inputList" />
           </div>
           <button type="submit" className="buttonSave">
             Save

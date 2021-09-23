@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 
 import App from './App'
-import reportWebVitals from './reportWebVitals'
 import { store } from './store'
+import reportWebVitals from './reportWebVitals'
+
 import './index.css'
 
 ReactDOM.render(

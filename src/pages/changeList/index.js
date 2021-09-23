@@ -3,8 +3,9 @@ import { useHistory, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { Modal } from 'react-bootstrap'
 
-import { getFilmsId } from '../../api/films'
 import routes from '../../routes'
+import { name, text, img } from '../../constans'
+import { getFilmsId } from '../../api/films'
 
 import './styles.css'
 
@@ -37,25 +38,15 @@ const ChangeList = ({ open, setOpen, changeFilm }) => {
       <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)} className="listForm">
         <div>
           <label className="labelList">Name Film</label>
-          <input
-            defaultValue={value.name}
-            {...register('name')}
-            type="text"
-            className="inputList"
-          />
+          <input defaultValue={value?.name} {...register(name)} type="text" className="inputList" />
         </div>
         <div>
           <label className="labelList">Rating Film</label>
-          <input
-            {...register('text')}
-            defaultValue={value.text}
-            type="text"
-            className="inputList"
-          />
+          <input {...register(text)} defaultValue={value?.text} type="text" className="inputList" />
         </div>
         <div>
           <label className="labelList">Film Image</label>
-          <input {...register('img')} type="file" className="inputList" />
+          <input {...register(img)} type="file" className="inputList" />
         </div>
         <button type="submit" className="buttonSave">
           Save

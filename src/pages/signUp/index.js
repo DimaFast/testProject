@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
 
 import routes from '../../routes'
-import Layout from '../../components/Layout'
+import { email, password } from '../../constans'
 import { setItem, getItem } from '../../localStorage'
+import Layout from '../../components/Layout'
 
 import './styles.css'
 
@@ -29,7 +30,7 @@ const SignUp = () => {
             Input Email
           </label>
           <input
-            {...register('email', { required: 'Please input email', defaultValue: '' })}
+            {...register(email, { required: 'Please input email', defaultValue: '' })}
             type="email"
             className="inputSign"
           />
@@ -37,7 +38,7 @@ const SignUp = () => {
             {!errors?.password ? 'Input Password' : 'Required Password'}
           </label>
           <input
-            {...register('password', { required: 'Please input password', defaultValue: '' })}
+            {...register(password, { required: 'Please input password', defaultValue: '' })}
             type="password"
             className="inputSign"
           />

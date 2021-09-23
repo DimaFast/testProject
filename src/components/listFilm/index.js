@@ -11,14 +11,14 @@ const ListFilm = ({ item, setOpen, removeFilm }) => {
 
   return (
     <div className="filmItem">
-      <img src={item.img} alt="" className="filmImg" />
+      <img src={item?.img} alt="" className="filmImg" />
       <div className="filmWrapper">
-        <p className="filmName">{item.name}</p>
-        <p className="filmRating">{item.text}</p>
-        <Link to={`/list/${item.id}`} onClick={() => setOpen(true)} className="changeFilm">
+        <p className="filmName">{item?.name}</p>
+        <p className="filmRating">{item?.text}</p>
+        <Link to={`/list/${item?.id}`} onClick={() => setOpen(true)} className="changeFilm">
           Change
         </Link>
-        <p style={{ marginTop: 30 }} onClick={() => removeFilm(item.id)} className="changeFilm">
+        <p style={{ marginTop: 30 }} onClick={() => removeFilm(item?.id)} className="changeFilm">
           Delete
         </p>
       </div>
