@@ -1,9 +1,9 @@
 import { setItem, getItem, removeItem } from '../localStorage'
 
-export const inUser = async (data) => {
+export const zinUser = async (data) => {
   const localStore = getItem('data')
   const user = localStore.find(
-    (mass) => data.email === mass.email && data.password === mass.password
+    ({ email, password }) => data.email === email && data.password === password
   )
 
   if (user) {

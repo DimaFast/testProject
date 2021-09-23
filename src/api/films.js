@@ -12,7 +12,6 @@ export const getFilmsId = async (filmId) => {
 
 export const setFilms = async (films) => {
   films.id = JSON.stringify(random(0, 100))
-  console.log(films)
   setItem('films', [...getItem('films'), films])
 }
 
