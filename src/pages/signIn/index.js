@@ -6,6 +6,7 @@ import { isEmpty, isNil } from 'lodash'
 
 import { inUser } from '../../api/user'
 import Layout from '../../components/Layout'
+import routes from '../../routes'
 
 import './styles.css'
 
@@ -19,8 +20,8 @@ const SignIn = ({ setUserPro }) => {
     formState: { errors },
   } = useForm()
 
-  const { loginUser } = useSelector(({ data }) => ({ loginUser: data.payload }))
-
+  const loginUser = useSelector((state) => state.user.data)
+  console.log(loginUser)
   const onSubmit = (data) => {
     inUser(data, history, setUserPro)
       .then((data) => {
@@ -35,7 +36,7 @@ const SignIn = ({ setUserPro }) => {
 
   useEffect(() => {
     if (!isNil(loginUser) && !isEmpty(loginUser)) {
-      history.push('/profile')
+      history.push(routes.profile)
     }
   }, [loginUser])
 
