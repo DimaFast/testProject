@@ -1,6 +1,6 @@
 import { setItem, getItem, removeItem } from '../localStorage'
 
-export const zinUser = async (data) => {
+export const inUser = async (data) => {
   const localStore = getItem('data')
   const user = localStore.find(
     ({ email, password }) => data.email === email && data.password === password
