@@ -5,7 +5,6 @@ const routes = {
   profile: '/profile',
   list: '/list',
   changeList: '/changeList',
-  test: '/test',
 }
 
 export default routes

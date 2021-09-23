@@ -39,25 +39,21 @@ const Test = () => {
     setValueWord(word)
   }
   const onSubmitMatrix = (data) => {
-    let q = null
-    for (let i = 0; i < data.valueMatrix; i++) {
-      let result = ''
-      for (let j = 0; j < data.valueMatrix; j++) {
-        result += `${random(0, 10)} `
-        result.split(' ').map((item, index) => {
-          if (Number(item) === 0) {
-            console.log('found', item, i, j)
-            return setValueMatrix(index)
-          }
-        })
+    let mass = [[data], [data]]
+    for (var i = 0; i < data.valueMatrix; i++) {
+      for (var j = 0; j < data.valueMatrix; j++) {
+        mass[([i], [j])] = random(0, 10)
+        console.log(mass)
+        if (mass[([i], [j])] === 0) {
+          return setValueMatrix(`${i} + ${j}`)
+        }
       }
-      console.log(result)
     }
   }
   return (
     <Layout>
-      <div>
-        <h1>Sign In</h1>
+      <div style={{ textAlign: 'center' }}>
+        <h1>Test</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label style={{ display: 'block' }} className="inputLabel">
             Input Value in byte
@@ -68,11 +64,11 @@ const Test = () => {
         <label style={{ display: 'block' }} className="inputLabel">
           Value in Mb
         </label>
-        <input value={value} type="number" />
+        <input defaultValue={value} type="number" />
         <label style={{ display: 'block' }} className="inputLabel">
           First number of Value
         </label>
-        <input value={valueFirst} type="number" />
+        <input defaultValue={valueFirst} type="number" />
         <label style={{ display: 'block' }} className="inputLabel">
           Max element
         </label>
@@ -87,11 +83,11 @@ const Test = () => {
         <label style={{ display: 'block' }} className="inputLabel">
           The most big word
         </label>
-        <input value={valueWord} type="text" />
+        <input defaultValue={valueWord} type="text" />
         <label style={{ display: 'block' }} className="inputLabel">
           Output Stroke from 6 to 20
         </label>
-        <input value={valueWordLength} type="text" />
+        <input defaultValue={valueWordLength} type="text" />
         <form onSubmit={handleSubmit(onSubmitMatrix)}>
           <label style={{ display: 'block' }} className="inputLabel">
             Input Matrix
