@@ -4,20 +4,21 @@ import { isEmpty } from 'lodash'
 
 import './styles.css'
 
-const ListFilm = ({ Item, setOpen, removeFilm }) => {
-  if (isEmpty(Item)) {
+const ListFilm = ({ item, setOpen, removeFilm }) => {
+  if (isEmpty(item)) {
     return <></>
   }
+
   return (
     <div className="filmItem">
-      <img src={Item.img} alt="" className="filmImg" />
+      <img src={item.img} alt="" className="filmImg" />
       <div className="filmWrapper">
-        <p className="filmName">{Item.name}</p>
-        <p className="filmRating">{Item.text}</p>
-        <Link to={`/list/${Item.id}`} onClick={() => setOpen(true)} className="changeFilm">
+        <p className="filmName">{item.name}</p>
+        <p className="filmRating">{item.text}</p>
+        <Link to={`/list/${item.id}`} onClick={() => setOpen(true)} className="changeFilm">
           Change
         </Link>
-        <p style={{ marginTop: 30 }} onClick={() => removeFilm(Item.id)} className="changeFilm">
+        <p style={{ marginTop: 30 }} onClick={() => removeFilm(item.id)} className="changeFilm">
           Delete
         </p>
       </div>

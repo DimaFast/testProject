@@ -7,10 +7,12 @@ import { getItem } from '../../localStorage'
 import './styles.css'
 
 const Header = () => {
+  const user = getItem('userLogin')
+
   return (
     <section className="header">
       <div className="headerInner">
-        <Link to={getItem('userLogin') ? routes.profile : routes.signUp} className="headerProfile">
+        <Link to={user ? routes.profile : routes.signUp} className="headerProfile">
           Profile
         </Link>
         <Link to={routes.signIn} className="headerIn">

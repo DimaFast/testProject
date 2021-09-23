@@ -10,7 +10,7 @@ import routes from '../../routes'
 
 import './styles.css'
 
-const SignIn = ({ setUserPro }) => {
+const SignIn = () => {
   const dispatch = useDispatch()
   const [error, setError] = useState()
   const history = useHistory()
@@ -19,14 +19,12 @@ const SignIn = ({ setUserPro }) => {
     handleSubmit,
     formState: { errors },
   } = useForm()
-
   const loginUser = useSelector((state) => state.user.data)
-  console.log(loginUser)
+
   const onSubmit = (data) => {
-    inUser(data, history, setUserPro)
+    inUser(data)
       .then((data) => {
         dispatch({ type: 'CREATE_USER', payload: data })
-        setUserPro(data)
       })
       .catch((error) => {
         setError(error.message)
@@ -55,15 +53,9 @@ const SignIn = ({ setUserPro }) => {
             className="inputSign"
             onFocus={() => setError('')}
           />
-          {!errors?.password ? (
-            <label style={{ display: 'block' }} className="inputLabel">
-              Input Password
-            </label>
-          ) : (
-            <label style={{ display: 'block' }} className="inputLabel">
-              Required Password
-            </label>
-          )}
+          <label style={{ display: 'block' }} className="inputLabel">
+            {!errors?.password ? 'Input Password' : 'Required Password'}
+          </label>
           <input
             {...register('password', { required: 'Please input password', defaultValue: '' })}
             type="password"

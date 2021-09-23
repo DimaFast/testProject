@@ -15,6 +15,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm()
   const history = useHistory()
+
   const onSubmit = (data) => {
     setItem('data', [...getItem('data'), data])
     history.push(routes.signIn)
@@ -32,15 +33,9 @@ const SignUp = () => {
             type="email"
             className="inputSign"
           />
-          {!errors?.password ? (
-            <label style={{ display: 'block' }} className="inputLabel">
-              Input Password
-            </label>
-          ) : (
-            <label style={{ display: 'block' }} className="inputLabel">
-              Required Password
-            </label>
-          )}
+          <label style={{ display: 'block' }} className="inputLabel">
+            {!errors?.password ? 'Input Password' : 'Required Password'}
+          </label>
           <input
             {...register('password', { required: 'Please input password', defaultValue: '' })}
             type="password"

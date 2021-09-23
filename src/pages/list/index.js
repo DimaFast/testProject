@@ -25,7 +25,7 @@ const List = () => {
     })
   }
 
-  const changeFilmId = (id, newData) => {
+  const changeFeildId = (id, newData) => {
     changeFilm(id, newData).then((index) => {
       setValue([...index, newData])
     })
@@ -38,13 +38,13 @@ const List = () => {
           <></>
         ) : (
           value.map((Item, index) => (
-            <ListFilm Item={Item} removeFilm={removeFilm} key={index} setOpen={setOpen} />
+            <ListFilm item={Item} removeFilm={removeFilm} key={index} setOpen={setOpen} />
           ))
         )}
       </section>
       <Switch>
         <Route path={`${match.path}/:id`}>
-          <ChangeList open={open} changeFilm={changeFilmId} setOpen={setOpen} data={value} />
+          <ChangeList open={open} changeFilm={changeFeildId} setOpen={setOpen} data={value} />
         </Route>
       </Switch>
     </Layout>

@@ -16,9 +16,11 @@ const Profile = () => {
   const loginUser = useSelector((state) => state.user.data)
   const { register, handleSubmit } = useForm()
   const history = useHistory()
+
   const onSubmit = (data) => {
     setFilms(data).then(() => history.push(routes.list))
   }
+
   const deleteUserClient = () => {
     deleteUser()
       .then((data) => dispatch({ type: 'DELETE_USER', payload: data }))
@@ -35,8 +37,8 @@ const Profile = () => {
         <section className="profile">
           <img src="" alt="" className="profileImg" />
           <div className="profileItem">
-            <p className="profileLogin">{loginUser.email}</p>
-            <p className="profilePassword">{loginUser.password}</p>
+            <p className="profileLogin">{loginUser?.email}</p>
+            <p className="profilePassword">{loginUser?.password}</p>
           </div>
           <p
             style={{ color: 'red', cursor: 'pointer' }}
