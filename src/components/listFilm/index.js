@@ -6,7 +6,7 @@ import './styles.css'
 
 const ListFilm = ({ item, setOpen, removeFilm }) => {
   if (isEmpty(item)) {
-    return <></>
+    return null
   }
 
   return (

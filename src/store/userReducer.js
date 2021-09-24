@@ -1,15 +1,17 @@
+import { CREATE_USER, DELETE_USER } from '../constans'
+
 const defaultState = {
   data: null,
 }
 
 export const userReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case 'CREATE_USER':
+    case CREATE_USER:
       return {
         ...state,
         data: action.payload,
       }
-    case 'DELETE_USER':
+    case DELETE_USER:
       return { ...state, data: action.payload }
     default:
       return state

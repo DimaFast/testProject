@@ -3,8 +3,9 @@ import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
 
 import routes from '../../routes'
-import { email, password } from '../../constans'
-import { setItem, getItem } from '../../localStorage'
+import { addUserToDB } from '../../api/user'
+import { EMAIL_FIELD, PASSWORD_FIELD } from '../../constans'
+import SimpleInput from '../../components/SimpleInput'
 import Layout from '../../components/Layout'
 
 import './styles.css'
@@ -17,10 +18,8 @@ const SignUp = () => {
   } = useForm()
   const history = useHistory()
 
-  const onSubmit = (data) => {
-    setItem('data', [...getItem('data'), data])
-    history.push(routes.signIn)
-  }
+  const onSubmit = (data) => addUserToDB(data).then(() => history.push(routes.signIn))
+
   return (
     <Layout>
       <div>
@@ -29,18 +28,23 @@ const SignUp = () => {
           <label style={{ display: 'block' }} className="inputLabel">
             Input Email
           </label>
-          <input
-            {...register(email, { required: 'Please input email', defaultValue: '' })}
-            type="email"
-            className="inputSign"
+          <SimpleInput
+            type={EMAIL_FIELD}
+            register={{
+              ...register(EMAIL_FIELD, {
+                required: 'Please input email',
+                defaultValue: '',
+              }),
+            }}
           />
           <label style={{ display: 'block' }} className="inputLabel">
             {!errors?.password ? 'Input Password' : 'Required Password'}
           </label>
-          <input
-            {...register(password, { required: 'Please input password', defaultValue: '' })}
-            type="password"
-            className="inputSign"
+          <SimpleInput
+            type={PASSWORD_FIELD}
+            register={{
+              ...register(PASSWORD_FIELD, { required: 'Please input password', defaultValue: '' }),
+            }}
           />
           <button type="submit">Submit</button>
         </form>

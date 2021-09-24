@@ -12,12 +12,8 @@ function App() {
 
   useEffect(() => {
     getUser()
-      .then((data) => {
-        dispatch({ type: 'CREATE_USER', payload: data })
-      })
-      .finally(() => {
-        setLoaded(false)
-      })
+      .then((data) => dispatch({ type: 'CREATE_USER', payload: data }))
+      .finally(() => setLoaded(false))
 
     return () => setLoaded(true)
   }, [])

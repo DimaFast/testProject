@@ -1,9 +1,9 @@
 const routes = {
   home: '/',
-  signUp: '/sign-Up',
-  signIn: '/sign-In',
-  profile: '/profile',
   list: '/list',
+  signUp: '/signUp',
+  signIn: '/signIn',
+  profile: '/profile',
   changeList: '/changeList',
 }
 

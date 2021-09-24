@@ -1,13 +1,13 @@
 import React from 'react'
-import { Redirect, useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { useForm } from 'react-hook-form'
 import { isEmpty } from 'lodash'
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { Redirect, useHistory } from 'react-router-dom'
 
 import routes from '../../routes'
 import { setFilms } from '../../api/films'
 import { deleteUser } from '../../api/user'
-import { img, name, text } from '../../constans'
+import { IMG_FIELD, NAME_FIELD, TEXT_FIELD } from '../../constans'
 import Layout from '../../components/Layout'
 
 import './styles.css'
@@ -32,7 +32,7 @@ const Profile = () => {
   }
 
   if (isEmpty(loginUser)) {
-    return <Redirect to={'/sign-Up'} />
+    return <Redirect to={routes.signUp} />
   }
 
   return (
@@ -55,15 +55,15 @@ const Profile = () => {
         <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)} className="listForm">
           <div>
             <label className="labelList">Name Film</label>
-            <input {...register(name)} type="text" className="inputList" />
+            <input {...register(NAME_FIELD)} type="text" className="inputList" />
           </div>
           <div>
             <label className="labelList">Rating Film</label>
-            <input {...register(text)} type="text" className="inputList" />
+            <input {...register(TEXT_FIELD)} type="text" className="inputList" />
           </div>
           <div>
             <label className="labelList">Film Image</label>
-            <input {...register(img)} type="file" className="inputList" />
+            <input {...register(IMG_FIELD)} type="file" className="inputList" />
           </div>
           <button type="submit" className="buttonSave">
             Save

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import { isEmpty, isNil } from 'lodash'
 
 import routes from '../../routes'
 import { inUser } from '../../api/user'
-import { email, password } from '../../constans'
+import { EMAIL_FIELD, PASSWORD_FIELD } from '../../constans'
+import SimpleInput from '../../components/SimpleInput'
 import Layout from '../../components/Layout'
 
 import './styles.css'
@@ -20,13 +21,11 @@ const SignIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const loginUser = useSelector((state) => state.user.data)
+  const loginUser = useSelector((state) => state?.user?.data)
 
   const onSubmit = (data) => {
     inUser(data)
-      .then((data) => {
-        dispatch({ type: 'CREATE_USER', payload: data })
-      })
+      .then((data) => dispatch({ type: 'CREATE_USER', payload: data }))
       .catch((error) => {
         setError(error.message)
         console.log(error)
@@ -48,19 +47,21 @@ const SignIn = () => {
           <label style={{ display: 'block' }} className="inputLabel">
             Input Email
           </label>
-          <input
-            {...register(email, { required: 'Please input email', defaultValue: '' })}
-            type={email}
-            className="inputSign"
+          <SimpleInput
+            type={EMAIL_FIELD}
+            register={{
+              ...register(EMAIL_FIELD, { required: 'Please input email', defaultValue: '' }),
+            }}
             onFocus={() => setError('')}
           />
           <label style={{ display: 'block' }} className="inputLabel">
             {!errors?.password ? 'Input Password' : 'Required Password'}
           </label>
-          <input
-            {...register(password, { required: 'Please input password', defaultValue: '' })}
-            type={password}
-            className="inputSign"
+          <SimpleInput
+            type={PASSWORD_FIELD}
+            register={{
+              ...register(PASSWORD_FIELD, { required: 'Please input password', defaultValue: '' }),
+            }}
             onFocus={() => setError('')}
           />
 
