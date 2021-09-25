@@ -1,7 +1,7 @@
 .filmItem{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
 }
@@ -14,7 +14,12 @@
 .filmWrapper{
     max-width: 1000px;
     width: 100%;
+    background: darkgray;
     text-align: center;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 20px;
+    color: white;
 }
 
 .filmName{
@@ -29,9 +34,11 @@
 .changeFilm{
     padding: 20px 40px;
     color: red;
+    display: inline-block;
     background-color: transparent;
     border: 1px solid red;
     cursor: pointer;
+    margin: 10px;
     transition: all 1s;
 }
 

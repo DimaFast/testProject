@@ -6,9 +6,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 300px;
+    max-width: 800px;
     margin: 0 auto;
-    line-height: 80px;
+    padding: 20px 0;
     position: sticky;
     top: 0;
+}
+
+.headerLink{
+    background-color: #104547;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    color: #FFFFFF;
+    text-transform: capitalize;
+    font-size: 18px;
+    line-height: 30px;
+    padding: 20px 0;
+    width: 150px;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.headerLink:hover{
+    color: #FFFFFF;
+    transform: scale(1.2);
 }

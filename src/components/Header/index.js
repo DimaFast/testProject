@@ -13,16 +13,16 @@ const Header = () => {
   return (
     <section className="header">
       <div className="headerInner">
-        <Link to={route} className="headerProfile">
+        <Link to={route} className="headerLink">
           Profile
         </Link>
-        <Link to={routes.signIn} className="headerIn">
+        <Link to={routes.signIn} className="headerLink">
           Sign In
         </Link>
-        <Link to={routes.signUp} className="headerUp">
+        <Link to={routes.signUp} className="headerLink">
           Sign Up
         </Link>
-        <Link to={routes.list} className="headerUp">
+        <Link to={routes.list} className="headerLink">
           List
         </Link>
       </div>

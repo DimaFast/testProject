@@ -1,0 +1,8 @@
+.close{
+    display: inline-block;
+    margin-left: auto;
+    color: #FFFFFF;
+    background-color: red;
+    border: none;
+    border-bottom-left-radius: 10px;
+}

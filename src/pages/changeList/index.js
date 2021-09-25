@@ -5,7 +5,7 @@ import { Modal } from 'react-bootstrap'
 
 import routes from '../../routes'
 import { getFilmsId } from '../../api/films'
-import { NAME_FIELD, TEXT_FIELD, IMG_FIELD } from '../../constans'
+import { NAME_FIELD, TEXT_FIELD } from '../../constans'
 import SimpleInput from '../../components/SimpleInput'
 
 import './styles.css'
@@ -36,28 +36,21 @@ const ChangeList = ({ open, setOpen, changeFilm }) => {
       >
         Close
       </button>
-      <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)} className="listForm">
+      <form
+        style={{ maxWidth: 'initial' }}
+        encType="multipart/form-data"
+        onSubmit={handleSubmit(onSubmit)}
+        className="formSignIn"
+      >
         <div>
           <label className="labelList">Name Film</label>
-          <SimpleInput
-            defaultValue={value?.name}
-            register={{ ...register(NAME_FIELD) }}
-            className="inputList"
-          />
+          <SimpleInput defaultValue={value?.name} register={{ ...register(NAME_FIELD) }} />
         </div>
         <div>
           <label className="labelList">Rating Film</label>
-          <SimpleInput
-            defaultValue={value?.text}
-            register={{ ...register(TEXT_FIELD) }}
-            className="inputList"
-          />
+          <SimpleInput defaultValue={value?.text} register={{ ...register(TEXT_FIELD) }} />
         </div>
-        <div>
-          <label className="labelList">Film Image</label>
-          <SimpleInput register={{ ...register(IMG_FIELD) }} type="file" className="inputList" />
-        </div>
-        <button type="submit" className="buttonSave">
+        <button style={{ marginBottom: 25 }} type="submit" className="signInSubmit">
           Save
         </button>
       </form>

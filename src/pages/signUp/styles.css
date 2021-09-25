@@ -1,0 +1,9 @@
+.signUp{
+    background: #F2F2F2;
+    border-radius: 20px;
+    padding: 30px 20px;
+}
+
+.signUp .inputSign{
+    border-radius: 5px;
+}

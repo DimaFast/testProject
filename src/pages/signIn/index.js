@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { isEmpty, isNil } from 'lodash'
 
@@ -40,12 +40,12 @@ const SignIn = () => {
 
   return (
     <Layout>
-      <div>
-        <h1>Sign In</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="signInInner">
+        <h1 className="signInTitle">Sign In profile</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className="formSignIn">
           <p>{error}</p>
-          <label style={{ display: 'block' }} className="inputLabel">
-            Input Email
+          <label style={{ display: 'block', marginRight: 'auto' }} className="inputLabel">
+            {!errors?.email ? 'Input email' : 'Required email'}
           </label>
           <SimpleInput
             type={EMAIL_FIELD}
@@ -54,8 +54,8 @@ const SignIn = () => {
             }}
             onFocus={() => setError('')}
           />
-          <label style={{ display: 'block' }} className="inputLabel">
-            {!errors?.password ? 'Input Password' : 'Required Password'}
+          <label style={{ display: 'block', marginRight: 'auto' }} className="inputLabel">
+            {!errors?.password ? 'Input password' : 'Required password'}
           </label>
           <SimpleInput
             type={PASSWORD_FIELD}
@@ -65,8 +65,14 @@ const SignIn = () => {
             onFocus={() => setError('')}
           />
 
-          <button type="submit">Submit</button>
+          <button className="signInSubmit" type="submit">
+            Submit
+          </button>
         </form>
+        <hr style={{ height: 2 }} className="betweenBtn" />
+        <Link to={routes.signUp} className="formLinkSignUp">
+          Sign Up
+        </Link>
       </div>
     </Layout>
   )

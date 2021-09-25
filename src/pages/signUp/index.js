@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import routes from '../../routes'
 import { addUserToDB } from '../../api/user'
@@ -22,11 +22,11 @@ const SignUp = () => {
 
   return (
     <Layout>
-      <div>
-        <h1>Sign Up</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label style={{ display: 'block' }} className="inputLabel">
-            Input Email
+      <div className="signInInner signUp">
+        <h1 className="signInTitle">Sign Up</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className="formSignIn">
+          <label style={{ display: 'block', marginRight: 'auto' }} className="inputLabel">
+            {!errors?.email ? 'Input email' : 'Required email'}
           </label>
           <SimpleInput
             type={EMAIL_FIELD}
@@ -37,7 +37,7 @@ const SignUp = () => {
               }),
             }}
           />
-          <label style={{ display: 'block' }} className="inputLabel">
+          <label style={{ display: 'block', marginRight: 'auto' }} className="inputLabel">
             {!errors?.password ? 'Input Password' : 'Required Password'}
           </label>
           <SimpleInput
@@ -46,8 +46,14 @@ const SignUp = () => {
               ...register(PASSWORD_FIELD, { required: 'Please input password', defaultValue: '' }),
             }}
           />
-          <button type="submit">Submit</button>
+          <button className="signInSubmit" type="submit">
+            Submit
+          </button>
         </form>
+        <hr style={{ height: 2 }} className="betweenBtn" />
+        <Link to={routes.signIn} className="formLinkSignUp">
+          Sign In
+        </Link>
       </div>
     </Layout>
   )

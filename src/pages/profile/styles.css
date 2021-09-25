@@ -1,0 +1,44 @@
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 820px;
+    margin: 40px auto 0;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #F2F2F2;
+}
+
+.profileItem{
+    display: flex;
+    align-items: center;
+}
+
+.profileImg{
+    margin-right: 25px;
+}
+
+.profileLogin, .profilePassword{
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.profileLogout{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: red;
+    padding: 16px 57px;
+    background-color: #FFFFFF;
+    border: 2px solid red;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.profileLogout:hover{
+    color: #FFFFFF;
+    background-color: red;
+    border-color: transparent;
+}

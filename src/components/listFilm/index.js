@@ -11,7 +11,6 @@ const ListFilm = ({ item, setOpen, removeFilm }) => {
 
   return (
     <div className="filmItem">
-      <img src={item?.img} alt="" className="filmImg" />
       <div className="filmWrapper">
         <p className="filmName">{item?.name}</p>
         <p className="filmRating">{item?.text}</p>
