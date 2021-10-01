@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { getUser } from './api/user'
 import Router from './Router'
 
+import 'rc-slider/assets/index.css'
 import './App.css'
 
 function App() {
