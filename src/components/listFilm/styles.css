@@ -19,7 +19,10 @@
     border-radius: 10px;
     margin: 10px 0;
     padding: 20px;
+    display: flex;
     color: white;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .filmName{
@@ -46,4 +49,8 @@
     color: #ffffff;
     background-color: red;
     border: 1px solid #FFFFFF;
+}
+
+.imageFilm{
+    max-width: 300px;
 }
