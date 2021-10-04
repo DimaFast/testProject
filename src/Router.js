@@ -1,20 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import routes from './routes'
-import SignUp from './pages/signUp'
-import SignIn from './pages/signIn'
 import Home from './pages/home'
-import Profile from './pages/profile'
 import List from './pages/list'
+import SignIn from './pages/signIn'
+import SignUp from './pages/signUp'
+import Profile from './pages/profile'
 import ChangeList from './pages/changeList'
-
-import Test from './pages/test'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Router = () => {
-  const [user, setUser] = useState({})
   const pages = [
     {
       path: routes.home,
@@ -25,19 +22,19 @@ const Router = () => {
     {
       path: routes.signUp,
       name: 'signUp',
-      Component: () => <SignUp setUser={setUser} />,
+      Component: SignUp,
       exact: true,
     },
     {
       path: routes.signIn,
       name: 'signIn',
-      Component: () => <SignIn setUserPro={setUser} />,
+      Component: SignIn,
       exact: true,
     },
     {
       path: routes.profile,
       name: 'profile',
-      Component: () => <Profile user={user} setUser={setUser} />,
+      Component: Profile,
       exact: true,
     },
     {
@@ -49,12 +46,6 @@ const Router = () => {
       path: routes.changeList,
       name: 'changeList',
       Component: ChangeList,
-      exact: true,
-    },
-    {
-      path: routes.test,
-      name: 'test',
-      Component: Test,
       exact: true,
     },
   ]

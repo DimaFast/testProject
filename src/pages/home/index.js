@@ -7,8 +7,8 @@ import './styles.css'
 function Home() {
   return (
     <Layout>
-      <div className="App">
-        <p>Home</p>
+      <div className="home">
+        <p className="homeText">Home</p>
       </div>
     </Layout>
   )

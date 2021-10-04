@@ -3,3 +3,12 @@
     flex-direction: column;
     flex-wrap: wrap;
 }
+
+.listForm{
+    display: flex;
+    margin: 40px auto;
+}
+
+.labelList{
+    margin: 0 15px;
+}

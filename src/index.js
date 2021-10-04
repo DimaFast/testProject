@@ -1,31 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+
 import App from './App'
-
+import { store } from './store'
 import reportWebVitals from './reportWebVitals'
+
 import './index.css'
-
-const defaultState = {
-  data: null,
-}
-
-const reducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case 'CREATE_USER':
-      return {
-        ...state,
-        data: action.payload,
-      }
-    case 'DELETE_USER':
-      return { ...state, data: action.payload }
-    default:
-      return state
-  }
-}
-
-let store = createStore(reducer)
 
 ReactDOM.render(
   <React.StrictMode>

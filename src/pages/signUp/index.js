@@ -1,8 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import routes from '../../routes'
+import { addUserToDB } from '../../api/user'
+import { EMAIL_FIELD, PASSWORD_FIELD } from '../../constans'
+import SimpleInput from '../../components/SimpleInput'
 import Layout from '../../components/Layout'
 
 import './styles.css'
@@ -14,42 +17,42 @@ const SignUp = () => {
     formState: { errors },
   } = useForm()
   const history = useHistory()
-  const onSubmit = (data) => {
-    localStorage.setItem(
-      'data',
-      JSON.stringify([...JSON.parse(localStorage.getItem('data')), data])
-    )
-    history.push(routes.signIn)
-  }
+
+  const onSubmit = (data) => addUserToDB(data).then(() => history.push(routes.signIn))
+
   return (
     <Layout>
-      <div>
-        <h1>Sign Up</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label style={{ display: 'block' }} className="inputLabel">
-            Input Email
+      <div className="signInInner signUp">
+        <h1 className="signInTitle">Sign Up</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className="formSignIn">
+          <label style={{ display: 'block', marginRight: 'auto' }} className="inputLabel">
+            {!errors?.email ? 'Input email' : 'Required email'}
           </label>
-          <input
-            {...register('email', { required: 'Please input email', defaultValue: '' })}
-            type="email"
-            className="inputSign"
+          <SimpleInput
+            type={EMAIL_FIELD}
+            register={register(EMAIL_FIELD, {
+              required: 'Please input email',
+              defaultValue: '',
+            })}
           />
-          {!errors?.password ? (
-            <label style={{ display: 'block' }} className="inputLabel">
-              Input Password
-            </label>
-          ) : (
-            <label style={{ display: 'block' }} className="inputLabel">
-              Required Password
-            </label>
-          )}
-          <input
-            {...register('password', { required: 'Please input password', defaultValue: '' })}
-            type="password"
-            className="inputSign"
+          <label style={{ display: 'block', marginRight: 'auto' }} className="inputLabel">
+            {!errors?.password ? 'Input Password' : 'Required Password'}
+          </label>
+          <SimpleInput
+            type={PASSWORD_FIELD}
+            register={register(PASSWORD_FIELD, {
+              required: 'Please input password',
+              defaultValue: '',
+            })}
           />
-          <button type="submit">Submit</button>
+          <button className="signInSubmit" type="submit">
+            Submit
+          </button>
         </form>
+        <hr style={{ height: 2 }} className="betweenBtn" />
+        <Link to={routes.signIn} className="formLinkSignUp">
+          Sign In
+        </Link>
       </div>
     </Layout>
   )
