@@ -49,9 +49,7 @@ const SignIn = () => {
           </label>
           <SimpleInput
             type={EMAIL_FIELD}
-            register={{
-              ...register(EMAIL_FIELD, { required: 'Please input email', defaultValue: '' }),
-            }}
+            register={register(EMAIL_FIELD, { required: 'Please input email', defaultValue: '' })}
             onFocus={() => setError('')}
           />
           <label style={{ display: 'block', marginRight: 'auto' }} className="inputLabel">
@@ -59,9 +57,10 @@ const SignIn = () => {
           </label>
           <SimpleInput
             type={PASSWORD_FIELD}
-            register={{
-              ...register(PASSWORD_FIELD, { required: 'Please input password', defaultValue: '' }),
-            }}
+            register={register(PASSWORD_FIELD, {
+              required: 'Please input password',
+              defaultValue: '',
+            })}
             onFocus={() => setError('')}
           />
 

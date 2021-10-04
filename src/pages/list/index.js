@@ -18,14 +18,16 @@ const List = () => {
   const dispatch = useDispatch()
   const match = useRouteMatch()
 
-  const removeFilm = (id) =>
-    deleteFilm(id).then((data) => dispatch({ type: 'GET_FILMS', payload: data }))
+  const dispatchData = (data) => {
+    dispatch({ type: 'GET_FILMS', payload: data })
+  }
 
-  const changeFieldId = (id, newData) =>
-    changeFilm(id, newData).then((data) => dispatch({ type: 'GET_FILMS', payload: data }))
+  const removeFilm = (id) => deleteFilm(id).then((data) => dispatchData(data))
+
+  const changeFieldId = (id, newData) => changeFilm(id, newData).then((data) => dispatchData(data))
 
   useEffect(() => {
-    getFilms().then((data) => dispatch({ type: 'GET_FILMS', payload: data }))
+    getFilms().then((data) => dispatchData(data))
   }, [])
 
   return (
