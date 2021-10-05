@@ -6,6 +6,8 @@ const SimpleInput = ({
   onFocus = () => null,
   defaultValue = '',
   className = 'inputSign',
+  onClick = () => null,
+  checked = false,
 }) => {
   return (
     <input
@@ -14,6 +16,8 @@ const SimpleInput = ({
       type={type}
       className={className}
       onFocus={onFocus}
+      onClick={onClick}
+      checked={checked}
     />
   )
 }
