@@ -18,15 +18,18 @@ import RangeFilm from '../RangeFilm'
 
 import './styles.css'
 
-const [MIN] = FILM_ADVERTISING
-
 const AddFilmModal = ({ open, setOpen }) => {
+  const [MIN] = FILM_ADVERTISING
   const [advertisingLabel, setAdvertisingLabel] = useState(FILM_ADVERTISING)
   const [q, setQ] = useState(FILM_ADVERTISING)
+  const [timeAdvertising, setTimeAdvertising] = useState(false)
   const { register, handleSubmit, reset, control } = useForm()
   const dispatch = useDispatch()
 
   const onSubmit = (data) => {
+    if (timeAdvertising) {
+      delete data.timeToAdvertising
+    }
     setFilms(data).then(() => {
       dispatch({ type: 'CREATE_FILMS', payload: data })
       setOpen(false)
@@ -47,11 +50,15 @@ const AddFilmModal = ({ open, setOpen }) => {
       >
         <div>
           <label className="labelList">Name Film</label>
-          <SimpleInput register={register(NAME_FIELD)} />
+          <SimpleInput register={register(NAME_FIELD, { required: 'please input' })} />
         </div>
         <div>
           <label className="labelList">Rating Film</label>
-          <SimpleInput register={register(TEXT_FIELD)} />
+          <SimpleInput
+            className="inputSign appearance"
+            type="number"
+            register={register(TEXT_FIELD, { required: 'please input' })}
+          />
         </div>
         <div>
           <label className="labelList">Link image film</label>
@@ -59,7 +66,7 @@ const AddFilmModal = ({ open, setOpen }) => {
         </div>
         <div style={{ width: '100%', maxWidth: 287 }}>
           <label className="labelList">Date Film</label>
-          <SimpleInput register={register('dateFilm')} type="date" />
+          <SimpleInput register={register('dateFilm', { required: 'please input' })} type="date" />
         </div>
         <div style={{ width: '100%', maxWidth: 287, marginBottom: 20 }}>
           <label style={{ marginBottom: 20 }} className="labelList">
@@ -68,7 +75,6 @@ const AddFilmModal = ({ open, setOpen }) => {
           <Controller
             control={control}
             name={TIME_FILM}
-            defaultValue={q[1]}
             render={({ field }) => (
               <SliderFilm
                 field={field}
@@ -92,6 +98,7 @@ const AddFilmModal = ({ open, setOpen }) => {
             render={({ field }) => (
               <RangeFilm
                 field={field}
+                disable={timeAdvertising}
                 setValueFilm={setAdvertisingLabel}
                 value={advertisingLabel}
                 max={q}
@@ -103,6 +110,11 @@ const AddFilmModal = ({ open, setOpen }) => {
             )}
           />
         </div>
+        <SimpleInput
+          type="checkbox"
+          checked={timeAdvertising}
+          onClick={() => setTimeAdvertising(!timeAdvertising)}
+        />
         <button style={{ marginBottom: 25 }} type="submit" className="signInSubmit">
           Save
         </button>

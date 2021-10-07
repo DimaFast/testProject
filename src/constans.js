@@ -12,4 +12,4 @@ export const LINK_IMAGE = 'linkImage'
 export const EMAIL_FIELD = 'email'
 export const TEXT_FIELD = 'text'
 export const NAME_FIELD = 'name'
-export const FILM_ADVERTISING = [0, 6000]
+export const FILM_ADVERTISING = [1800, 6000]

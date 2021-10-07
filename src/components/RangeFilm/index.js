@@ -1,8 +1,5 @@
 import React, { useCallback, useMemo } from 'react'
 import { Range } from 'rc-slider'
-import { FILM_ADVERTISING } from '../../constans'
-
-const { MIN } = FILM_ADVERTISING
 
 const RangeFilm = ({
   field,
@@ -13,6 +10,7 @@ const RangeFilm = ({
   marksMax,
   marksMinLabel,
   marksMaxLabel,
+  disable = false,
 }) => {
   const changeTime = useCallback(
     (value) => {
@@ -54,13 +52,14 @@ const RangeFilm = ({
   return (
     <Range
       {...field}
+      disabled={disable}
       onChange={(value) => changeTime(value)}
       step={[60]}
-      min={MIN}
-      value={value}
+      min={1800}
+      value={disable ? [0, 0] : value}
       max={max}
       dotStyle={{ display: 'none' }}
-      marks={marksMemo}
+      marks={disable ? {} : marksMemo}
     />
   )
 }
