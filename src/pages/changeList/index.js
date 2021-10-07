@@ -19,8 +19,7 @@ const ChangeList = ({ open, setOpen, changeFilm }) => {
   const [value, setValue] = useState({})
   const [filmTime, setFilmTime] = useState([])
   const [advertisingLabel, setAdvertisingLabel] = useState()
-  const boolValue = isNil(advertisingLabel)
-  const [advert, setAdvert] = useState(boolValue)
+  const [advert, setAdvert] = useState(true)
 
   const {
     register,
@@ -32,6 +31,7 @@ const ChangeList = ({ open, setOpen, changeFilm }) => {
       [TIME_TO_ADVERTISING]: advertisingLabel,
       [NAME_FIELD]: value?.name,
       [TEXT_FIELD]: value?.text,
+      [LINK_IMAGE]: value?.linkImage,
       ['dateFilm']: value?.dateFilm,
     },
   })
@@ -50,10 +50,13 @@ const ChangeList = ({ open, setOpen, changeFilm }) => {
       setFormValue(NAME_FIELD, data?.name)
       setFormValue('dateFilm', data?.dateFilm)
       setFormValue(TEXT_FIELD, data?.text)
-      setFormValue(TIME_TO_ADVERTISING, data?.timeToAdvertising)
+      const value = isNil(data?.timeToAdvertising) ? [0, data?.timeFilm] : data?.timeToAdvertising
+      setFormValue(TIME_TO_ADVERTISING, value)
       setFormValue(TIME_FILM, data?.timeFilm)
-      setAdvertisingLabel(data?.timeToAdvertising)
+      setFormValue(LINK_IMAGE, data?.linkImage)
       setFilmTime(data?.timeFilm)
+      setAdvert(isNil(data?.timeToAdvertising))
+      setAdvertisingLabel(value)
     })
   }, [])
 
@@ -120,12 +123,12 @@ const ChangeList = ({ open, setOpen, changeFilm }) => {
                 field={field}
                 disable={advert}
                 setValueFilm={setAdvertisingLabel}
-                value={advert ? [0, 0] : advertisingLabel}
+                value={advertisingLabel}
                 max={filmTime}
-                marksMin={boolValue ? advert[0] : advertisingLabel[0]}
-                marksMax={boolValue ? advert[1] : advertisingLabel[1]}
-                marksMaxLabel={boolValue ? advert[1] : advertisingLabel[1]}
-                marksMinLabel={boolValue ? advert[0] : advertisingLabel[0]}
+                marksMin={advert ? 0 : advertisingLabel[0]}
+                marksMax={advert ? 0 : advertisingLabel[1]}
+                marksMaxLabel={advert ? 0 : advertisingLabel[1]}
+                marksMinLabel={advert ? 0 : advertisingLabel[0]}
               />
             )}
           />

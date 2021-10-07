@@ -39,7 +39,7 @@ export const changeFilm = async (filmId, newData) => {
 
   const allFilms = value.reduce((prev, curr) => {
     if (curr.id === filmId) {
-      curr = { ...curr, ...newItem }
+      curr = newItem
     }
     return [...prev, curr]
   }, [])
